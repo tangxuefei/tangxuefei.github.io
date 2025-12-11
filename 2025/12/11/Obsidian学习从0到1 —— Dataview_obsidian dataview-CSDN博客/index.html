@@ -1,0 +1,901 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/atango.png">
+  <link rel="icon" href="/img/atango.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="阿汤哥">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.数据库 Obsidian资料库 &#x3D; 一个数据库  学习方式：  掌握原理和语法使用时查阅该文档  2.Dataview1.定义 Obsidian资料库的查询工具&#x2F;插件访问社区下载并启用  查询对象：Obsidian数据库查询依据：YAML数据 &#x2F;Meatainfo（元数据）  Meatainfo（元数据）：每一个笔记自动有的YAML数据 ：通过一定的格式自己撰写的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿汤哥的博客">
+<meta property="og:url" content="http://atango.cn/2025/12/11/Obsidian%E5%AD%A6%E4%B9%A0%E4%BB%8E0%E5%88%B01%20%E2%80%94%E2%80%94%20Dataview_obsidian%20dataview-CSDN%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="阿汤哥的博客">
+<meta property="og:description" content="1.数据库 Obsidian资料库 &#x3D; 一个数据库  学习方式：  掌握原理和语法使用时查阅该文档  2.Dataview1.定义 Obsidian资料库的查询工具&#x2F;插件访问社区下载并启用  查询对象：Obsidian数据库查询依据：YAML数据 &#x2F;Meatainfo（元数据）  Meatainfo（元数据）：每一个笔记自动有的YAML数据 ：通过一定的格式自己撰写的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/badd671b26cc371d365310b9a189a04a.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b106b50c331c50625b1c7d9c2dffa514.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/afc0ed7630abfd4b02665e325095141f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b21bbcd085ff9630c728d5517c219bc7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/a61fd913e0b35062ba1b412cedae1fd7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/43bf18d45df1bbf40501b341edb03ac9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/437e057b8377a30ff85a1115aa76597c.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0bef34ab93f97104050c1ed6c399fcbb.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/180cfe27386ddfe9d087c682c8046983.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/a23a25a1a9043ef13c578a6573a6c96f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/e0d82719da1870e242565a58d4ae4f7e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/1ba81f4c20f0925554cf6941ad4830f1.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/9e18d157aab19b2a7ca8053c2f13aba3.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0b4a17db0a6788a241d1234845ee88a9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/113f7c07fe3ac2137c17a9cf03e2cb06.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/9563186d35980d42e16675945ccf07c9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/15fa9d87a1809fd274c03a7fed928da2.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4c5da2f0099033e48d7d4d0b384b7718.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/c2e6e4272d2b593d8ae346ad248e77c0.png">
+<meta property="article:published_time" content="2025-12-11T08:30:40.368Z">
+<meta property="article:modified_time" content="2025-11-14T04:11:55.275Z">
+<meta property="article:author" content="阿汤哥">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/badd671b26cc371d365310b9a189a04a.png">
+  
+  
+  
+  <title>阿汤哥的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"atango.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Atango&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-11 16:30" pubdate>
+          2025年12月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="1-数据库"><a href="#1-数据库" class="headerlink" title="1.数据库"></a>1.数据库</h3><blockquote>
+<p>Obsidian资料库 &#x3D; 一个数据库</p>
+</blockquote>
+<p><strong>学习方式</strong>：</p>
+<blockquote>
+<p>掌握原理和语法<br>使用时查阅该文档</p>
+</blockquote>
+<h3 id="2-Dataview"><a href="#2-Dataview" class="headerlink" title="2.Dataview"></a>2.Dataview</h3><h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h4><blockquote>
+<p>Obsidian资料库的<strong>查询工具&#x2F;插件</strong><br><strong>访问社区下载并启用</strong></p>
+</blockquote>
+<p>查询对象：Obsidian数据库<br>查询依据：YAML数据 &#x2F;Meatainfo（<strong>元数据</strong>）</p>
+<blockquote>
+<p>Meatainfo（元数据）：每一个笔记<strong>自动</strong>有的<br>YAML数据 ：通过一定的格式<strong>自己撰写</strong>的</p>
+</blockquote>
+<blockquote>
+<p>类似GitHub的查询</p>
+</blockquote>
+<ul>
+<li>使用例子</li>
+</ul>
+<blockquote>
+<p><strong>与sql语句类似的查询思想</strong></p>
+</blockquote>
+<blockquote>
+<p>格式：** 前后3个` +dataview + 语法**</p>
+</blockquote>
+<blockquote>
+<p><strong>以列表方式查询00 Inbox下的笔记</strong></p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/badd671b26cc371d365310b9a189a04a.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>在` 后面<strong>回车</strong> 即可以<strong>显示查询结果</strong></p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b106b50c331c50625b1c7d9c2dffa514.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>修改与查询一样有个<strong>代码图标</strong>点击即可以<strong>修改查询代码</strong></p>
+</blockquote>
+<h4 id="2-场景"><a href="#2-场景" class="headerlink" title="2.场景"></a>2.场景</h4><ul>
+<li>什么时候使用<strong>搜索</strong></li>
+</ul>
+<blockquote>
+<ul>
+<li>条件单一</li>
+<li>无需保存结果</li>
+</ul>
+</blockquote>
+<ul>
+<li>什么时候使用<strong>查询</strong></li>
+</ul>
+<blockquote>
+<ul>
+<li>条件复杂</li>
+<li>需要保存结果</li>
+<li><strong>数据库查询的思想</strong></li>
+</ul>
+</blockquote>
+<h4 id="3-YAML"><a href="#3-YAML" class="headerlink" title="3.YAML"></a>3.YAML</h4><ul>
+<li>位于Markdown文件开头</li>
+<li>首尾三个 -<br><img src="https://i-blog.csdnimg.cn/blog_migrate/afc0ed7630abfd4b02665e325095141f.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+</ul>
+<blockquote>
+<p>key,values相当于<strong>c语言中定义的对象与赋值</strong></p>
+</blockquote>
+<ul>
+<li>Obsidian支持的YMAL字段</li>
+</ul>
+<blockquote>
+<ul>
+<li>tags 标签</li>
+<li>publish</li>
+<li>css</li>
+<li>class</li>
+<li>aliases</li>
+</ul>
+</blockquote>
+<ul>
+<li>自定义字段</li>
+</ul>
+<blockquote>
+<ul>
+<li>category 分类</li>
+<li>date 时间</li>
+<li>time 日期</li>
+<li>title 标题</li>
+<li>rating 评分，重要程度</li>
+</ul>
+</blockquote>
+<ul>
+<li>行内标记</li>
+</ul>
+<blockquote>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino">  - OneField::Value<br><br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></blockquote>
+<p>例子：</p>
+<ul>
+<li>直接在笔记里定义查询</li>
+</ul>
+<blockquote>
+<p>完成对<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3&spm=1001.2101.3001.7020">测试文档</a>ymal属性的自定义</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b21bbcd085ff9630c728d5517c219bc7.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>查询自定义的ymal属性笔记 类似SQL语句</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a61fd913e0b35062ba1b412cedae1fd7.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>回车即可查询</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/43bf18d45df1bbf40501b341edb03ac9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li>插入模板进行查询</li>
+</ul>
+<p>用模板功能撰写固定的ymal格式，然后再通过通配符在不同的笔记自动生成相应的信息</p>
+<blockquote>
+<p>每次使用时都要写的话会很麻烦，因此就要用到<strong>模板和通配符</strong>的知识</p>
+</blockquote>
+<blockquote>
+<p>在模板里写好自定义的ymal数据</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/437e057b8377a30ff85a1115aa76597c.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0bef34ab93f97104050c1ed6c399fcbb.png" srcset="/img/loading.gif" lazyload alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-J3OHX20D-1659284459415)(https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2022&#x2F;png&#x2F;27574817&#x2F;1659281228354-79be4e58-740b-407b-b96a-4143d40ad95f.png#clientId&#x3D;ueae43e12-6cbb-4&amp;crop&#x3D;0&amp;crop&#x3D;0&amp;crop&#x3D;1&amp;crop&#x3D;1&amp;from&#x3D;paste&amp;height&#x3D;334&amp;id&#x3D;uca03ace0&amp;margin&#x3D;%5Bobject%20Object%5D&amp;name&#x3D;image.png&amp;originHeight&#x3D;417&amp;originWidth&#x3D;356&amp;originalType&#x3D;binary&amp;ratio&#x3D;1&amp;rotation&#x3D;0&amp;showTitle&#x3D;false&amp;size&#x3D;38346&amp;status&#x3D;done&amp;style&#x3D;none&amp;taskId&#x3D;uc473aa03-2b62-4b23-a251-d9e0eb5d6b2&amp;title&#x3D;&amp;width&#x3D;284.8)]"><br>注意：ymal格式冒号后面的空格，缺少的话就无法查询</p>
+<blockquote>
+<p>再在要使用的笔记里插入这个模板就欧克了</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/180cfe27386ddfe9d087c682c8046983.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>回车属性dataview查询代码块即可进行查询</p>
+</blockquote>
+<blockquote>
+<p>文件大小 obsidian中的元数据（元信息Meatainfo）不能手动更改<br>而评分<br>通过ymal格式自定义的，通过表格查询时就可以查询如何自己定义的ymal格式的属性</p>
+</blockquote>
+<ul>
+<li>如：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/a23a25a1a9043ef13c578a6573a6c96f.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+</ul>
+<blockquote>
+<p>查询<br><img src="https://i-blog.csdnimg.cn/blog_migrate/e0d82719da1870e242565a58d4ae4f7e.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</blockquote>
+<h4 id="4-Ob文件属性"><a href="#4-Ob文件属性" class="headerlink" title="4.Ob文件属性"></a>4.Ob文件属性</h4><blockquote>
+<p>（每一条笔记都拥有的元数据）Meatainfo</p>
+</blockquote>
+<ul>
+<li>file.name: 文件标题(字符串)</li>
+<li>file.folder: 文件所属文件夹路径</li>
+<li>file.path:文件路径</li>
+<li>file.size:(in bytes)文件大小</li>
+<li>file.ctime: 文件的创建时间（包含日期和时间）</li>
+<li>file.mtime: 文件的修改时间</li>
+<li>file.cday: 文件创建的日期</li>
+<li>file.mday: 文件修改的日期</li>
+<li>file.tags:笔记中所有标签数组</li>
+<li>file.etags: 除去子标签的数组</li>
+<li>file.inlinks:指向此文件的所有传入链接的数组</li>
+<li>file.outlinks: 此文件所有出站的链接数组</li>
+<li>file.aliases: 文件别名数组</li>
+<li>file.day：如果文件名中有日期，那么会以这个字段显示。比如文件名中包含 yyyy-mm-dd（年-月-日，例如2021-03-21），那么就会存在这个 metadata。</li>
+</ul>
+<h4 id="5-Ob任务属性"><a href="#5-Ob任务属性" class="headerlink" title="5.Ob任务属性"></a>5.Ob任务属性</h4><blockquote>
+<p>Meatainfo</p>
+</blockquote>
+<ul>
+<li>Task会继承所在文件的所有字段，比如 Task所在的页面中已经包含了 rating 信息了，那么 task 也会有</li>
+<li>completed:任务是否完成</li>
+<li>fullyCompleted:任务以及所有的子任务是否完成</li>
+<li>text:任务名</li>
+<li>line: task 所在行</li>
+<li>path:task所在路径</li>
+<li>section: 连接到任务所在区块</li>
+<li>link: 连接到距离任务最近的可连接的区块</li>
+<li>subtasks: 子任务</li>
+<li>real:如果为 true,则是一个真正的任务，否则就是一个任务之前或之后的元素列表</li>
+<li>completion: 任务完成的日期</li>
+<li>due: 任务到期时间</li>
+<li>created:创建日期</li>
+<li>annotated:如果任务有自定义标记则为 True，否则为 False</li>
+</ul>
+<h3 id="3-DataView语法代码流程"><a href="#3-DataView语法代码流程" class="headerlink" title="3.DataView语法代码流程"></a>3.DataView语法代码流程</h3><ol>
+<li>展示方式</li>
+</ol>
+<ul>
+<li>Table</li>
+<li>List</li>
+<li>Task</li>
+</ul>
+<ol>
+<li>语法</li>
+</ol>
+<blockquote>
+<p>常用语法规程，类似<strong>sql语句</strong><br>ob的文件属性，任务属性都可以使用</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/1ba81f4c20f0925554cf6941ad4830f1.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li>dataview</li>
+<li>list|table|task</li>
+<li>from</li>
+<li>where</li>
+<li>sort<br>- asc，升序<br>- desc，降序</li>
+</ul>
+<blockquote>
+<p>代码块格式<br>前后3个`<br>声明采用dataview语法<br>3种展现方式（列表，表格，任务）<br>查询来源 # 标签 “具体文件夹”<br>条件语句 同时满足多个条件（and) 多个中的一个（or）<br>排序 sort 元数据&#x2F;ymal 升降序</p>
+</blockquote>
+<p><strong>例子1(列表）:</strong><br><img src="https://i-blog.csdnimg.cn/blog_migrate/9e18d157aab19b2a7ca8053c2f13aba3.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/blog_migrate/0b4a17db0a6788a241d1234845ee88a9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>查询结果</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/113f7c07fe3ac2137c17a9cf03e2cb06.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>例子2（表格）：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/9563186d35980d42e16675945ccf07c9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>查询</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/15fa9d87a1809fd274c03a7fed928da2.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>例子3：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/4c5da2f0099033e48d7d4d0b384b7718.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>查询<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c2e6e4272d2b593d8ae346ad248e77c0.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</blockquote>
+<ol>
+<li>查询方式</li>
+</ol>
+<ul>
+<li>文件夹</li>
+<li>标签</li>
+</ul>
+<ol>
+<li>使用建议</li>
+</ol>
+<ul>
+<li>保存常用查询（永久保存，整理）</li>
+<li>生成文件夹索引(直观）</li>
+<li><strong>dataview生成的链接不会影响双链，就不会影响关系图谱（因为仅仅是数据查询）</strong></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://atango.cn/2025/12/11/Obsidian学习从0到1 —— Dataview_obsidian dataview-CSDN博客/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>阿汤哥</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/11/%E5%9B%BE%E5%BA%8A/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/11/Obsidian%E5%8F%8C%E9%93%BE%E4%B8%8E%E7%BB%84%E5%9D%97%E5%AD%A6%E4%B9%A0%E6%B3%95/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'tangxuefei/tangxuefei.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
